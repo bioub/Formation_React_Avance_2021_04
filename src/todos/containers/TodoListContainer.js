@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 
+import { todoDelete, todoUpdate } from '../actions';
 import TodoList from '../components/TodoList/TodoList';
 import { selectTodosCount, selectTodosItems } from '../selectors';
 
@@ -10,6 +11,16 @@ function mapStateToProps(state) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    onDeleteItem(item) {
+      dispatch(todoDelete(item));
+    },
+    onUpdateItem(item) {
+      dispatch(todoUpdate(item));
+    }
+  }
+}
 
 
-export default connect(mapStateToProps)(TodoList);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

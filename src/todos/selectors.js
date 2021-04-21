@@ -15,7 +15,8 @@ function selectTodos(state) {
 }
 
 function selectTodosCount(state) {
-  return selectTodosItems(state).length;
+  console.log('selectTodosCount');
+  return selectTodosItems(state).filter((it) => !it.completed).length;
 }
 
 function selectTodosItems(state) {

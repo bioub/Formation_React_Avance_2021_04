@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { TODO_ADD, TODO_CHANGE } from './constants';
+import { TODO_ADD, TODO_CHANGE, TODO_DELETE, TODO_UPDATE } from './constants';
 
 // pure function
 // - prédictive : appelée avec des params données
@@ -24,6 +24,10 @@ function itemsReducer(previousState = [], { type, payload }) {
   switch (type) {
     case TODO_ADD:
       return [...previousState, payload];
+    case TODO_DELETE:
+      return previousState.filter((item) => item.id !== payload.id);
+    case TODO_UPDATE:
+      return previousState.map((item) => item.id !== payload.id ? item : {...item, ...payload});
     default:
       return previousState;
   }
