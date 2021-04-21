@@ -1,6 +1,21 @@
 import { CircularProgress } from '@material-ui/core';
+import { useEffect } from 'react';
 
 export default function UsersShow({ user, loading }) {
+  // useEffect(() => {
+  //   console.log('componentDidMount');
+  //   return () => {
+  //     console.log('componentWillUnmount');
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    console.log('componentDidMount + componentDidUpdate si user change');
+    return () => {
+      console.log('componentWillUnmount + entre 2 refresh si user change');
+    }
+  }, [user]);
+
   return (
     <div className="UsersShow">
       {loading && <CircularProgress />}

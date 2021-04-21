@@ -4,22 +4,28 @@ export default class Clock extends Component {
   constructor() {
     super();
     this.state = {
-      options: {
-        format: 'HH:mm:ss',
-      },
       now: new Date(),
     };
   }
   componentDidMount() {
+    const { delay = 1000 } = this.props;
     this._interval = setInterval(() => {
-      // Object.assign() / shallow merge
       this.setState({
-        options: {
-          delay: 1000,
-        },
         now: new Date(),
       });
-    }, 1000);
+    }, delay);
+  }
+  componentDidUpdate() {
+    // TODO ne faire ça que si le delay change
+    console.log('componentDidUpdate')
+
+    clearInterval(this._interval);
+    const { delay = 1000 } = this.props;
+    this._interval = setInterval(() => {
+      this.setState({
+        now: new Date(),
+      });
+    }, delay);
   }
   componentWillUnmount() {
     clearInterval(this._interval);

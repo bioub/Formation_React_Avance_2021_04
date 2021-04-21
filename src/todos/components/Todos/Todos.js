@@ -1,4 +1,4 @@
-import Clock from '../../../components/Clock/Clock';
+import HideableClock from '../../../components/Clock/HideableClock';
 import TodoFormContainer from '../../containers/TodoFormContainer';
 import TodoListContainer from '../../containers/TodoListContainer';
 
@@ -9,7 +9,7 @@ export default function Todos() {
       <TodoListContainer />
 
       <hr />
-      <Clock />
+      <HideableClock />
     </div>
   );
 }
