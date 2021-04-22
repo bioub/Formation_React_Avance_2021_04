@@ -1,14 +1,22 @@
 import './index.css';
 
+import { configureStore } from '@reduxjs/toolkit';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import App from './components/App/App';
-import { configureStore } from './configureStore';
+// import { configureStore } from './configureStore';
 import * as serviceWorker from './serviceWorker';
+import { todosReducer } from './todos/reducers';
+import { usersReducer } from './users/reducers';
+
+const reducer = {
+  todos: todosReducer,
+  users: usersReducer,
+};
 
 ReactDOM.render(
-  <Provider store={configureStore()}>
+  <Provider store={configureStore({ reducer })}>
     <App />
   </Provider>,
   document.getElementById('root'),

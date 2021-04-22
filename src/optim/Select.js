@@ -6,7 +6,7 @@ function Select({selected = '', items= [], onSelect, onDelete, deletable = false
   const hostRef = useRef();
   useEffect(() => {
     function callback(event) {
-      if (!hostRef.current.contains(event.target)) {
+      if (!hostRef.current?.contains(event.target)) {
         setOpen(false);
       }
     }

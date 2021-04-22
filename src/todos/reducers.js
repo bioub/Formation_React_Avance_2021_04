@@ -1,5 +1,7 @@
+import { createReducer } from '@reduxjs/toolkit'
 import { combineReducers } from 'redux';
 
+import { todoChange } from './actions';
 import { TODO_ADD, TODO_CHANGE, TODO_DELETE, TODO_UPDATE } from './constants';
 
 // const nextState = reducer(state, action);
@@ -12,14 +14,17 @@ import { TODO_ADD, TODO_CHANGE, TODO_DELETE, TODO_UPDATE } from './constants';
 // state ne doit pas être modifié, retourner un nouveau state
 // - ne doit pas avoir de side-effect (on utilisera redux-thunk ou saga)
 // pas de requete HTTP, pas d'appel au localStorage
-function inputReducer(previousState = '', { type, payload }) {
-  switch (type) {
-    case TODO_CHANGE:
-      return payload;
-    default:
-      return previousState;
-  }
-}
+// function inputReducer(previousState = '', { type, payload }) {
+//   switch (type) {
+//     case TODO_CHANGE:
+//       return payload;
+//     default:
+//       return previousState;
+//   }
+// }
+const inputReducer = createReducer('', ({
+  [todoChange]: (state, {payload}) => payload
+}))
 
 function itemsReducer(previousState = [], { type, payload }) {
   switch (type) {

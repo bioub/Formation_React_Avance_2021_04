@@ -25,3 +25,23 @@ Pour mettre à jour le state quand une checkbox est cochée, reproduire les éta
 - action creator
 - mapDispatchToProps
 - reducer
+
+## Redux Avance
+
+Exercice 2 :
+
+Réécrire `TodoListContainer` avec les hooks `useDispatch` et `useSelector` (sur le modèle de `TodoFormContainer`);
+
+Exercice 3 :
+
+Réécrire les actions restantes de todos en utilisant `createAction`
+
+Réécrire `itemsReducer` de todos pour utiliser `createReducer`
+
+Supprimer le fichier contants
+
+Exercice 4 :
+
+Idem dans user pour actions et reducer
+
+Utiliser `createSelector` pour faire un memo de `selectUsersItemsById`
