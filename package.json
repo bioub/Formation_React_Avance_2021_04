@@ -10,13 +10,15 @@
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "reselect": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^7.24.0",
     "import-sort": "^6.0.0",
     "import-sort-cli": "^6.0.0",
     "import-sort-style-module": "^6.0.0",
+    "memoizee": "^0.4.15",
     "prettier": "^2.2.1",
     "react-scripts": "^4.0.1"
   },

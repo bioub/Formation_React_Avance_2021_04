@@ -8,6 +8,7 @@ export default class TodoList extends PureComponent {
   //   return this.props.items !== nextProps.items;
   // }
   render() {
+    console.log('render TodoList');
     const { count, items, onDeleteItem, onUpdateItem } = this.props;
     return (
       <div>

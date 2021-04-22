@@ -9,15 +9,23 @@
 //  selectTodosItems,
 //  (items) => items.length
 // );
+import { createSelector } from 'reselect'
 
 function selectTodos(state) {
   return state.todos;
 }
 
-function selectTodosCount(state) {
-  console.log('selectTodosCount');
-  return selectTodosItems(state).filter((it) => !it.completed).length;
-}
+const selectTodosCount = createSelector(
+  selectTodosItems,
+  (items) => {
+    console.log('selectTodosCount');
+    return items.filter((it) => !it.completed).length
+  }
+);
+// function selectTodosCount(state) {
+//   console.log('selectTodosCount');
+//   return selectTodosItems(state).filter((it) => !it.completed).length;
+// }
 
 function selectTodosItems(state) {
   return selectTodos(state).items;

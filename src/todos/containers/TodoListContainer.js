@@ -22,5 +22,5 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+const createContainer = connect(mapStateToProps, mapDispatchToProps);
+export default createContainer(TodoList);
