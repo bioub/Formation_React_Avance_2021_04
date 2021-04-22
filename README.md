@@ -42,6 +42,12 @@ Supprimer le fichier contants
 
 Exercice 4 :
 
+Utiliser redux-persist pour faire persister le state de redux
+dans le localStorage :
+https://github.com/rt2zz/redux-persist#basic-usage
+
+Exercice 5 :
+
 Idem dans user pour actions et reducer
 
 Utiliser `createSelector` pour faire un memo de `selectUsersItemsById`
