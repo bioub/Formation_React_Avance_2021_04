@@ -1,9 +1,9 @@
-import { Component, use, useState } from 'react';
+import { Component, useState } from 'react';
 
 function hideable(WrappedComponent) {
   // class Hideable extends Component {
   //   state = {
-  //     0: true,
+  //     show: true,
   //   };
   //   render() {
   //     const { show } = this.state;
@@ -19,6 +19,7 @@ function hideable(WrappedComponent) {
   // }
   function Hideable({ defaultShow, ...otherProps }) {
     const [show, setShow] = useState(true);
+
 
     return (
         <>

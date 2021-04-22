@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 
 import { TODO_ADD, TODO_CHANGE, TODO_DELETE, TODO_UPDATE } from './constants';
 
+// const nextState = reducer(state, action);
 // pure function
 // - prédictive : appelée avec des params données
 // elle retourne toujours la même chose
@@ -27,7 +28,9 @@ function itemsReducer(previousState = [], { type, payload }) {
     case TODO_DELETE:
       return previousState.filter((item) => item.id !== payload.id);
     case TODO_UPDATE:
-      return previousState.map((item) => item.id !== payload.id ? item : {...item, ...payload});
+      return previousState.map((item) =>
+        item.id !== payload.id ? item : { ...item, ...payload },
+      );
     default:
       return previousState;
   }
@@ -37,5 +40,31 @@ const todosReducer = combineReducers({
   input: inputReducer,
   items: itemsReducer,
 });
+
+// function todosReducer(
+//   previousState = { input: '', items: [] },
+//   { type, payload },
+// ) {
+//   switch (type) {
+//     case TODO_CHANGE:
+//       return { ...previousState, input: payload };
+//     case TODO_ADD:
+//       return { ...previousState, items: [...previousState, payload] };
+//     case TODO_DELETE:
+//       return {
+//         ...previousState,
+//         items: previousState.filter((item) => item.id !== payload.id),
+//       };
+//     case TODO_UPDATE:
+//       return {
+//         ...previousState,
+//         items: previousState.map((item) =>
+//           item.id !== payload.id ? item : { ...item, ...payload },
+//         ),
+//       };
+//     default:
+//       return previousState;
+//   }
+// }
 
 export { inputReducer, itemsReducer, todosReducer };

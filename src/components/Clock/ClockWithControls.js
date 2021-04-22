@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Clock from "./Clock";
+import Clock from "./ClockHooks";
 
 function ClockWithControls() {
   const [delay, setDelay] = useState(1000);

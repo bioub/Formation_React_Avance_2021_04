@@ -11,8 +11,10 @@ export default function UsersShow({ user, loading }) {
 
   useEffect(() => {
     console.log('componentDidMount + componentDidUpdate si user change');
+    console.log(user);
     return () => {
       console.log('componentWillUnmount + entre 2 refresh si user change');
+      console.log(user);
     }
   }, [user]);
 
