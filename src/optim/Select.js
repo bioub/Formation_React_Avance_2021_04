@@ -1,11 +1,32 @@
-import { memo } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 
 import SelectItem from "./SelectItem";
 
-function Select({items= [], onDelete}) {
+function Select({selected = '', items= [], onSelect, onDelete, deletable = false}) {
+  const hostRef = useRef();
+  useEffect(() => {
+    function callback(event) {
+      if (!hostRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+
+    // setInterval
+    // new WebSocket
+    document.addEventListener('click', callback);
+    return () => {
+      // clearInterval
+      // ws.close()
+      document.removeEventListener('click', callback);
+    }
+  }, [])
   console.log('render Select');
-  return <div className="Select">
-    {items.map((it) => <SelectItem item={it} key={it} onDelete={onDelete} />)}
+  const [open, setOpen] = useState(false);
+  return <div ref={hostRef} className="Select" onClick={(event) => setOpen(!open)}>
+    <div className="selected">{selected}</div>
+    {open && <div className="items">
+      {items.map((it) => <SelectItem item={it} key={it} onSelect={onSelect} onDelete={onDelete} deletable={deletable} />)}
+    </div>}
   </div>;
 }
 

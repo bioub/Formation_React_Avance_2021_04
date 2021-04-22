@@ -4,6 +4,17 @@ function randomInt() {
   return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
 }
 
+// function createAction(type) {
+//   return (payload) => {
+//     return {
+//       type,
+//       payload
+//     }
+//   }
+// }
+
+// const todoChange = createAction(TODO_CHANGE);
+
 function todoChange(payload) {
   return { type: TODO_CHANGE, payload };
 }

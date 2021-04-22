@@ -1,8 +1,8 @@
-function SelectItem({item = '', onDelete = () => {}}) {
+function SelectItem({item = '', onSelect = () => {}, onDelete = () => {}, deletable = false}) {
   // console.log('SelectItem');
-  return <div className="SelectItem">
+  return <div className="SelectItem" onClick={() => onSelect(item)}>
     {item}
-    <button onClick={() => onDelete(item)}>-</button>
+    {deletable && <button onClick={() => onDelete(item)}>-</button>}
   </div>;
 }
 
