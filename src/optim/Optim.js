@@ -1,3 +1,4 @@
+import Counter from '../components/Counter/Counter';
 import Select from './Select';
 
 const { useState, useCallback } = require('react');
@@ -52,6 +53,12 @@ function Optim() {
         onSelect={onSelectMemo}
         onDelete={onDeleteMemo}
       />
+
+      <h2>Render Props</h2>
+      {/* <Counter component={({count}) => <b>{count}</b>} /> */}
+      <Counter>
+        {({count}) => <b>{count}</b>}
+      </Counter>
     </div>
   );
 }
