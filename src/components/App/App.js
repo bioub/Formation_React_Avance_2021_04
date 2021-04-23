@@ -13,9 +13,7 @@ export default function App() {
       <BrowserRouter>
         <TopBar />
         <div className="App-Route-Container">
-          <Route path="/todos">
-            {({location}) => <Todos location={location} />}
-          </Route>
+          <Route path="/todos" component={Todos} />
           <Route path="/users" component={Users} />
           <Route path="/optim" component={Optim} />
         </div>

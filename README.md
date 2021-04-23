@@ -51,3 +51,16 @@ Exercice 5 :
 Idem dans user pour actions et reducer
 
 Utiliser `createSelector` pour faire un memo de `selectUsersItemsById`
+
+## Optionnel Form
+
+Exercice :
+Créer un formulaire avec React Final Form avec 3 champs :
+
+- username
+- email
+- phone
+
+Valider que username soit bien rempli (champ obligatoire)
+
+Valider que email respecte le format d'une adresse mail.

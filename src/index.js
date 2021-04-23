@@ -26,7 +26,9 @@ if (reduxStateLS) {
   catch {}
 }
 
-const store = configureStore({ reducer, preloadedState });
+console.log(process.env.REACT_APP_MY_VAR);
+
+const store = configureStore({ reducer, preloadedState, devTools: process.env.NODE_ENV === 'development' });
 
 store.subscribe(throttle(() => {
   localStorage.setItem('redux-state', JSON.stringify(store.getState()));

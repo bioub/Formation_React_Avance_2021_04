@@ -5,8 +5,8 @@ const { useState, useCallback } = require('react');
 
 function Optim() {
   const [selectedColor, setSelectorColor] = useState('Vert');
-  const [colors, setColors] = useState(['Rouge', 'Vert', 'Bleu']);
-  // const [colors, setColors] = useState((new Array(3000)).fill('').map((v, i) => 'Item ' + i));
+  // const [colors, setColors] = useState(['Rouge', 'Vert', 'Bleu']);
+  const [colors, setColors] = useState((new Array(3000)).fill('').map((v, i) => 'Item ' + i));
   const [inputValue, setInputValue] = useState('');
 
   // champ non-controllé (React n'a pas la main sur son contenu)
@@ -54,7 +54,7 @@ function Optim() {
         onDelete={onDeleteMemo}
       />
 
-      <h2>Render Props</h2>
+      <h2 className="selected">Render Props</h2>
       {/* <Counter component={({count}) => <b>{count}</b>} /> */}
       <Counter>
         {({count}) => <b>{count}</b>}

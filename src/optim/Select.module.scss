@@ -1,0 +1,13 @@
+$color: purple;
+
+.selected {
+  border: 1px solid $color;
+  padding: 5px;
+  color: $color;
+  cursor: pointer;
+  user-select: none;
+}
+
+.close {
+  display: none;
+}
