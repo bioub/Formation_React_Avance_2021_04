@@ -1,25 +1,27 @@
-import { USER_FETCH, USER_FETCH_SUCCESS } from './constants';
+import { createReducer } from '@reduxjs/toolkit'
+
+import { userFetch } from './actions';
 
 const initialValue = {
   loading: false,
   items: [],
 };
 
-export function usersReducer(previousState = initialValue, { type, payload }) {
-  switch (type) {
-    case USER_FETCH:
-      return {
-        ...previousState,
-        loading: true,
-        items: [],
-      };
-    case USER_FETCH_SUCCESS:
-      return {
-        ...previousState,
-        loading: false,
-        items: payload,
-      };
-    default:
-      return previousState;
-  }
-}
+export const usersReducer = createReducer(initialValue, {
+  [userFetch.pending]: (state) => ({
+    ...state,
+    loading: true,
+    items: [],
+  }),
+  [userFetch.fulfilled]: (state, {payload}) => ({
+    ...state,
+    loading: false,
+    items: payload,
+  }),
+  [userFetch.rejected]: (state, {error}) => ({
+    ...state,
+    loading: false,
+    error,
+  })
+})
+

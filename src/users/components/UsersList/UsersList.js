@@ -2,19 +2,14 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Component, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { userFetch, userFetchSuccess } from '../../actions';
-import { getAll } from '../../api/users';
-
-export default function UsersList({ match, users = [], loading, dispatch }) {
+export default function UsersList({ match, users = [], loading, onLoad }) {
   useEffect(() => {
-    dispatch(userFetch());
-    getAll().then((users) => {
-      dispatch(userFetchSuccess(users));
-    });
-  }, [dispatch]);
+    // redux-thunk | redux-observable
+    onLoad();
+  }, [onLoad]);
   return (
     <div className="UsersList">
       {loading ? (
