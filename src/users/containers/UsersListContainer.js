@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
-import { userFetch, userFetchSuccess } from '../actions';
-import { getAll } from '../api/users';
+import { userFetch } from '../actions';
 import UsersList from '../components/UsersList/UsersList';
 import { selectUsersItems, selectUsersLoading } from '../selectors';
 

@@ -64,3 +64,11 @@ Créer un formulaire avec React Final Form avec 3 champs :
 Valider que username soit bien rempli (champ obligatoire)
 
 Valider que email respecte le format d'une adresse mail.
+
+## Tests
+
+Ecrire les tests de reducers et de selectors.
+
+Ecrire les tests du composant Select avec enzyme
+
+

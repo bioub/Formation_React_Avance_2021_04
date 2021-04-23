@@ -6,8 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { Link as RouterLink } from 'react-router-dom';
 
-import Optim from '../../optim/Optim';
-
 export default function TopBar() {
   return (
     <div className="TopBar">

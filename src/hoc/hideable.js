@@ -1,4 +1,4 @@
-import { Component, useState } from 'react';
+import { useState } from 'react';
 
 function hideable(WrappedComponent) {
   // class Hideable extends Component {
