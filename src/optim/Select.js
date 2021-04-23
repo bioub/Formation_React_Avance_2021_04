@@ -6,6 +6,8 @@ function Select({selected = '', items= [], onSelect, onDelete, deletable = false
   const hostRef = useRef();
   useEffect(() => {
     function callback(event) {
+      console.log('document click')
+      // ES2020 : Optional chaining
       if (!hostRef.current?.contains(event.target)) {
         setOpen(false);
       }

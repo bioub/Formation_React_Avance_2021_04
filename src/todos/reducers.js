@@ -1,8 +1,7 @@
-import { createReducer } from '@reduxjs/toolkit'
+import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 
-import { todoChange } from './actions';
-import { TODO_ADD, TODO_CHANGE, TODO_DELETE, TODO_UPDATE } from './constants';
+import { todoAdd, todoChange, todoDelete, todoUpdate } from './actions';
 
 // const nextState = reducer(state, action);
 // pure function
@@ -22,24 +21,19 @@ import { TODO_ADD, TODO_CHANGE, TODO_DELETE, TODO_UPDATE } from './constants';
 //       return previousState;
 //   }
 // }
-const inputReducer = createReducer('', ({
-  [todoChange]: (state, {payload}) => payload
-}))
+const inputReducer = createReducer('', {
+  [todoChange]: (state, { payload }) => payload,
+});
 
-function itemsReducer(previousState = [], { type, payload }) {
-  switch (type) {
-    case TODO_ADD:
-      return [...previousState, payload];
-    case TODO_DELETE:
-      return previousState.filter((item) => item.id !== payload.id);
-    case TODO_UPDATE:
-      return previousState.map((item) =>
-        item.id !== payload.id ? item : { ...item, ...payload },
-      );
-    default:
-      return previousState;
-  }
-}
+const itemsReducer = createReducer([], {
+  [todoAdd]: (state, { payload }) => [...state, payload],
+  [todoDelete]: (state, { payload }) =>
+    state.filter((item) => item.id !== payload.id),
+  [todoUpdate]: (state, { payload }) =>
+    state.map((item) =>
+      item.id !== payload.id ? item : { ...item, ...payload },
+    ),
+});
 
 const todosReducer = combineReducers({
   input: inputReducer,

@@ -1,6 +1,7 @@
 import './index.css';
 
 import { configureStore } from '@reduxjs/toolkit';
+import { throttle } from 'lodash-es'
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
@@ -15,8 +16,24 @@ const reducer = {
   users: usersReducer,
 };
 
+let preloadedState;
+const reduxStateLS = localStorage.getItem('redux-state');
+
+if (reduxStateLS) {
+  try {
+    preloadedState = JSON.parse(reduxStateLS);
+  }
+  catch {}
+}
+
+const store = configureStore({ reducer, preloadedState });
+
+store.subscribe(throttle(() => {
+  localStorage.setItem('redux-state', JSON.stringify(store.getState()));
+}, 1000));
+
 ReactDOM.render(
-  <Provider store={configureStore({ reducer })}>
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root'),

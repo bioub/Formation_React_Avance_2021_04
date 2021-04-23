@@ -9,7 +9,7 @@ function countCompleted(items) {
 //   let cache;
 //   let previousArgs;
 //   return (...args) => {
-//     if (deepEquals(previousArgs, args)) {
+//     if (shallowEquals(previousArgs, args)) {
 //       return cache;
 //     }
 //     cache = fct(...args);

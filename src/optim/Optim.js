@@ -5,7 +5,7 @@ const { useState, useCallback } = require('react');
 function Optim() {
   const [selectedColor, setSelectorColor] = useState('Vert');
   const [colors, setColors] = useState(['Rouge', 'Vert', 'Bleu']);
-  // const [colors, setColors] = useState((new Array(3)).fill('').map((v, i) => 'Item ' + i));
+  // const [colors, setColors] = useState((new Array(3000)).fill('').map((v, i) => 'Item ' + i));
   const [inputValue, setInputValue] = useState('');
 
   // champ non-controllé (React n'a pas la main sur son contenu)
@@ -21,6 +21,8 @@ function Optim() {
     },
     [colors],
   );
+
+  const onSelectMemo = useCallback((item) => setSelectorColor(item), []);
 
   return (
     <div className="Optim">
@@ -47,7 +49,7 @@ function Optim() {
       <Select
         selected={selectedColor}
         items={colors}
-        onSelect={(item) => setSelectorColor(item)}
+        onSelect={onSelectMemo}
         onDelete={onDeleteMemo}
       />
     </div>
